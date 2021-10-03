@@ -59,7 +59,8 @@ public class TestsFile {
         try (FileInputStream stream = new FileInputStream("src/test/resources/frog.docx")) {
             XWPFDocument docxFile = new XWPFDocument(OPCPackage.open(stream));
             XWPFWordExtractor extractor = new XWPFWordExtractor(docxFile);
-            assert ("В полднях от горячих лучей солнца стал плавиться снег").contains("лучей");
+
+            assert (extractor.getText().contains("лучей"));
         }
     }
 }
