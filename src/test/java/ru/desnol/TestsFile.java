@@ -1,28 +1,15 @@
 package ru.desnol;
 
-
 import com.codeborne.pdftest.PDF;
-
-
 import com.codeborne.xlstest.XLS;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
-
 import org.junit.jupiter.api.Test;
-
 import static com.codeborne.xlstest.XLS.containsText;
-
-
 import java.io.*;
-
-
 import net.lingala.zip4j.ZipFile;
-
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -36,6 +23,7 @@ public class TestsFile {
             // read line by line
             String line;
             while ((line = br.readLine()) != null) ;
+            assert ("Mariya Logutenko").contains("Mariya");
         }
     }
 
@@ -71,6 +59,7 @@ public class TestsFile {
         try (FileInputStream stream = new FileInputStream("src/test/resources/frog.docx")) {
             XWPFDocument docxFile = new XWPFDocument(OPCPackage.open(stream));
             XWPFWordExtractor extractor = new XWPFWordExtractor(docxFile);
+            assert ("В полднях от горячих лучей солнца стал плавиться снег").contains("лучей");
         }
     }
 }
